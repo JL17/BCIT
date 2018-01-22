@@ -3,6 +3,7 @@ import BCIT.COMP1451.A00972783.Lab2a.*;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Game {
 	
 	private final int THIRTYMONTH = 30;
