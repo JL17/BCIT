@@ -21,6 +21,8 @@ public class Date {
 	private final int NOV = 4;
 	private final int DEC = 6;
 	
+	public Date() {}
+	
 	public Date(int day, int month, int year)
 	{
 		this.day   = day;
@@ -66,7 +68,7 @@ public class Date {
 			leapYear = true;
 		}
 		
-		return leapYear;		
+		return leapYear;
 	}
 	
 	public int getMonthCode()
@@ -142,8 +144,7 @@ public class Date {
 		//how many fours go into the value found by previous operation
 		int howManyFours = remainder / 4;
 		
-		//add all previous results
-		
+		//add all previous results		
 		int addAllNumbers = howManyTwelves + remainder + howManyFours + getDay() + getMonthCode();
 		
 		dayOfWeekCode = addAllNumbers % 7;
