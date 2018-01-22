@@ -149,7 +149,7 @@ public class Date {
 		int addAllNumbers = howManyTwelves + remainder + howManyFours + getDay() + getMonthCode();
 		
 		dayOfWeekCode = addAllNumbers % 7;
-		
+		 
 		switch(dayOfWeekCode)
 		{
 		case 0: dayOfWeek = "Saturday";
