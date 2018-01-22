@@ -1,5 +1,4 @@
 package BCIT.COMP1451.A00972783.Lab2a;
-import BCIT.COMP1451.A00972783.Lab2b.*;
 
 //Class to test the date class
 public class Test {

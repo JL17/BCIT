@@ -23,33 +23,33 @@ public class Game {
 			
 		if(randomMonth == 1 || randomMonth == 3 || randomMonth == 5 || randomMonth == 7 || randomMonth == 8 || randomMonth == 10 || randomMonth == 12)
 		{
-			int randomThirtyOneDay = r.nextInt(THIRTYONEMONTH) + 1;
+			randomDay = r.nextInt(THIRTYONEMONTH) + 1;
 			System.out.println("Year: " + randomYear);
 			System.out.println("Month: " + randomMonth);
-			System.out.println("Day: " + randomThirtyOneDay);
+			System.out.println("Day: " + randomDay);
 			System.out.println("31 day Month");
-			Date date = new Date(randomThirtyOneDay, randomMonth, randomYear);
+			Date date = new Date(randomDay, randomMonth, randomYear);
 			return date;
 			
 		}
 		else if(randomMonth == 2)
 		{
-			int randomFebDay = r.nextInt(FEB) + 1;
+			randomDay = r.nextInt(FEB) + 1;
 			System.out.println("Year: " + randomYear);
 			System.out.println("Month: " + randomMonth);
-			System.out.println("Day: " + randomFebDay);
+			System.out.println("Day: " + randomDay);
 			System.out.println("Feb Month");
-			Date date = new Date(randomFebDay, randomMonth, randomYear);
+			Date date = new Date(randomDay, randomMonth, randomYear);
 			return date;
 		}		
 		else
 		{
-			int randomThirtyDay = r.nextInt(THIRTYMONTH) + 1;
+			randomDay = r.nextInt(THIRTYMONTH) + 1;
 			System.out.println("Year: " + randomYear);
 			System.out.println("Month: " + randomMonth);
-			System.out.println("Day: " + randomThirtyDay);
+			System.out.println("Day: " + randomDay);
 			System.out.println("30 day Month");
-			Date date = new Date(randomThirtyDay, randomMonth, randomYear);
+			Date date = new Date(randomDay, randomMonth, randomYear);
 			return date;
 		}
 	}
@@ -72,6 +72,7 @@ public class Game {
 			System.out.println("incorrect, your guess: " + input + ". answer: " + randomYear);
 		}
 		
+		s.close();
 	}
 
 	
