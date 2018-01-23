@@ -13,7 +13,49 @@ public class Game {
 	private int randomYear;
 	private int randomMonth;
 	private int randomDay;
-
+	private String monthString;
+	private String dayOfWeek;
+	
+	public void setMonthString()
+	{
+		switch(getRandomMonth())
+		{
+		case 1: monthString = "January";
+		break;
+		case 2: monthString = "February";
+		break;
+		case 3: monthString = "March";
+		break;
+		case 4: monthString = "April";
+		break;
+		case 5: monthString = "May";
+		break;
+		case 6: monthString = "June";
+		break;
+		case 7: monthString = "July";
+		break;
+		case 8: monthString = "August";
+		break;
+		case 9: monthString = "September";
+		break;
+		case 10: monthString = "October";
+		break;
+		case 11: monthString = "November";
+		break;
+		case 12: monthString = "December";
+		break;
+		}
+	}
+	
+	public int getRandomMonth()
+	{
+		return randomMonth;
+	}
+	
+	public String getMonthString()
+	{
+		return monthString;
+	}
 	
 	public Date getRandomDate()
 	{		
@@ -30,6 +72,7 @@ public class Game {
 			System.out.println("Day: " + randomDay);
 			System.out.println("31 day Month");
 			Date date = new Date(randomDay, randomMonth, randomYear);
+			dayOfWeek = date.getDayOfWeek();
 			return date;
 			
 		}
@@ -41,6 +84,7 @@ public class Game {
 			System.out.println("Day: " + randomDay);
 			System.out.println("Feb Month");
 			Date date = new Date(randomDay, randomMonth, randomYear);
+			dayOfWeek = date.getDayOfWeek();
 			return date;
 		}		
 		else
@@ -51,6 +95,7 @@ public class Game {
 			System.out.println("Day: " + randomDay);
 			System.out.println("30 day Month");
 			Date date = new Date(randomDay, randomMonth, randomYear);
+			dayOfWeek = date.getDayOfWeek();
 			return date;
 		}
 	}
@@ -58,27 +103,31 @@ public class Game {
 	public void guessTheDate()
 	{
 		boolean quitting = false;
-		boolean guessMonth = false;
-		boolean guessDay = false;
 		
-		Scanner s = new Scanner(System.in);	
-		
-		System.out.println("Guess the Year: ");
+		Scanner s = new Scanner(System.in);
+
+		System.out.println("Guess the Year: ");	
 		
 		while(!quitting)
-		{
+		{	
+			boolean guessMonth = false;
+			boolean guessDay = false;
 			
 			if(s.hasNextInt())
 			{
 				int input = s.nextInt();
 				
-				if(input < randomYear)
+				if(input == 0)
 				{
-					System.err.println("incorrect, actual value is higher. Guess year again: ");
+					System.err.println("Zero is not a valid year. Guess year again: or Q to quit.");
+				}	
+				else if(input < randomYear)
+				{
+					System.err.println("incorrect, actual value is higher. Guess year again: Or Q to quit.");
 				}
 				else if(input > randomYear)
 				{
-					System.err.println("incorrect, actual value is lower. Guess year again: ");
+					System.err.println("incorrect, actual value is lower. Guess year again: Or Q to quit.");
 				}
 				else
 				{
@@ -90,43 +139,55 @@ public class Game {
 					while(!guessMonth)
 					{
 						if(s.hasNextInt())
-							{	
-							int monthInput = s.nextInt();
-					
-							if(monthInput < randomMonth)
 							{
-								System.err.println("incorrect, actual value is higher. Guess month again: ");
+							int monthInput = s.nextInt();
+							
+							if(monthInput == 0)
+							{
+								System.err.println("Zero is not a valid month. Guess month again: Or Q to quit.");
+							}
+							else if(monthInput < randomMonth)
+							{
+								System.err.println("incorrect, actual value is higher. Guess month again: Or Q to quit.");
 							}
 							else if(monthInput > randomMonth)
 							{
-								System.err.println("incorrect, actual value is lower. Guess month again: ");
+								System.err.println("incorrect, actual value is lower. Guess month again: Or Q to quit.");
 							}
+
 							else
 							{
 								System.out.println("correct");
 							
-								System.out.println("Guess the Day: ");
+								System.out.println("Guess the Day: or Q to quit.");
 							
 									while(!guessDay)
 									{
 										if(s.hasNextInt())
-										{	
+										{
 											int dayInput = s.nextInt();
-								
-											if(dayInput < randomDay)
+											
+											if(dayInput == 0)
 											{
-												System.err.println("incorrect, actual value is higher. Guess day again: ");
+												System.err.println("Zero is not a valid day. Guess day again: Or Q to quit.");
+											}
+											else if(dayInput < randomDay)
+											{
+												System.err.println("incorrect, actual value is higher. Guess day again: Or Q to quit.");
 											}
 											else if(dayInput > randomDay)
 											{
-												System.err.println("incorrect, actual value is lower. Guess day again: ");
+												System.err.println("incorrect, actual value is lower. Guess day again: Or Q to quit.");
 											}
 											else
 											{
 												System.out.println("correct");
 												guessDay = true;
 												guessMonth = true;
-												System.out.println("YOU ARE THE WINNER! Type in a year to play again. Q for quit");
+												setMonthString();
+												System.out.println("YOU ARE THE WINNER! The date was: " + getMonthString() + " " + randomDay + ", " + randomYear + ". It was a " + dayOfWeek +". Play again or press Q to quit: ");
+												System.out.println();
+												getRandomDate();
 											}
 										}	
 										else
@@ -142,7 +203,7 @@ public class Game {
 											else
 											{
 												System.err.println("not a number: " + stringInput);
-												System.out.println("Guess day again: ");
+												System.out.println("Guess day again: Or Q to Quit.");
 											}
 										}
 							}
@@ -151,17 +212,16 @@ public class Game {
 						}
 						else
 						{
-							String stringInput = s.next();
-							if(stringInput.equalsIgnoreCase("q"))
+							String monthStepInput = s.next();
+							if(monthStepInput.equalsIgnoreCase("q"))
 							{
 								System.out.println("quitting, bye");
 								quitting = true;
-								guessMonth = true;
 							}
 							else
 							{
-								System.err.println("not a number: " + stringInput);
-								System.out.println("Guess month again: ");
+								System.err.println("not a number: " + monthStepInput);
+								System.out.println("Guess month again: or Q to Quit.");
 							}
 						}
 				}
@@ -173,6 +233,7 @@ public class Game {
 				if(stringInput.equalsIgnoreCase("q"))
 				{
 					System.out.println("quitting, bye");
+					System.out.println();
 					quitting = true;
 				}
 				else
@@ -181,11 +242,24 @@ public class Game {
 					System.out.println("Guess year again: ");
 				}
 			}
-		}
+
 		
+		}
 		s.close();
 	}
+	
+	public void guessTheBirthdayDate()
+	{
+		Scanner s = new Scanner(System.in);
 
+		System.out.println("Guess the Year: ");	
+		
+		boolean quitting = false;
+		
+		
+		
+		
+	}
 	
 }
 

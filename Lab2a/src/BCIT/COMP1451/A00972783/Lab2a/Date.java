@@ -6,7 +6,7 @@ public class Date {
 	private int year;
 	private int monthCode;
 	private int dayOfWeekCode;
-	private String dayOfWeek;	
+	private String dayOfWeek;
 	
 	private final int JAN = 1;
 	private final int FEB = 4;
@@ -169,7 +169,7 @@ public class Date {
 		}		
 		
 		return dayOfWeek;
-	}
+	}	
 	
 	public void printDetails()
 	{	
