@@ -256,35 +256,149 @@ public class Game {
 		Scanner s = new Scanner(System.in);
 		
 		boolean quitting = false;
-		boolean correctInput = false;
+		boolean secondInputGuess = false;
+		boolean thirdInputGuess = false;
+		boolean fourthInputGuess = false;
+		boolean fifthInputGuess = false;
+		int winCount = 0;
 		
+		if(winCount < 5)
+		{
 		while(!quitting)
 		{
 			System.out.println("Guess Day of Week");
 			
 			if(s.hasNext())
-			{												
-				while(!correctInput)
-				{				
-					if(s.hasNext())
-					{
-						String input = s.next();
+			{
+				String input = s.next();
 						
-						if(dayOfWeek.equalsIgnoreCase(input))
+					if(dayOfWeek.equalsIgnoreCase(input))
+					{
+						System.out.println("Correct");
+						System.out.println();
+						System.out.println("2nd Random Date");
+						getRandomDate();
+
+						System.out.println(dayOfWeek);
+						winCount++;
+						System.out.println("win count is: " + winCount);
+						
+						
+						while(!secondInputGuess)
 						{
-							System.err.println("Correct, you win... bye");
-							quitting = true;
-							correctInput = true;
+							System.out.println("Guess Day of Week (2ndTime)");
+							
+						if(s.hasNext())
+						{							
+							String secondInput = s.next();
+							if(dayOfWeek.equalsIgnoreCase(secondInput))
+							{
+								System.out.println("Correct");
+								System.out.println();
+								System.out.println("3rd Random Date");
+								getRandomDate();
+								System.out.println(dayOfWeek);
+								winCount++;
+								System.out.println("win count is: " + winCount);
+								
+								
+								while(!thirdInputGuess)
+								{
+									System.out.println("Guess Day of Week (3rdTime)");
+									
+								if(s.hasNext())
+								{
+
+									String thirdInput = s.next();
+									if(dayOfWeek.equalsIgnoreCase(thirdInput))
+									{
+										System.out.println("Correct");
+										System.out.println();
+										
+										System.out.println("4th Random Date");
+										getRandomDate();
+										System.out.println(dayOfWeek);
+										winCount++;
+										System.out.println("win count is: " + winCount);
+										
+										while(!fourthInputGuess)
+										{
+											System.out.println("Guess Day of Week (4th Time)");
+											
+											if(s.hasNext())
+											{
+												String fourthInput = s.next();
+												if(dayOfWeek.equalsIgnoreCase(fourthInput))
+												{
+													System.out.println("Correct");
+													System.out.println();
+													
+													System.out.println("5th Random Date");
+													getRandomDate();
+													System.out.println(dayOfWeek);
+													winCount++;
+													System.out.println("win count is: " + winCount);
+													
+													while(!fifthInputGuess)
+													{
+														System.out.println("Guess Day of Week (5th Time)");
+														
+														if(s.hasNext())
+														{
+															String fifthInput = s.next();
+															if(dayOfWeek.equalsIgnoreCase(fifthInput))
+															{
+																System.out.println("Correct");
+																winCount++;
+																fifthInputGuess = true;
+																fourthInputGuess = true;
+																thirdInputGuess = true;
+																secondInputGuess = true;
+																quitting = true;
+															}
+															
+															else
+															{
+																System.out.println("incorrect try again");
+															}
+														}
+													}
+												
+													
+												}
+												else
+												{
+													System.out.println("incorrect, guess again: ");
+												}
+											}											
+										}
+									
+									}
+									else
+									{
+										System.err.println("incorrect, guess again: ");
+									}
+								}
+								}
+								
+							}
+							else
+							{
+								System.err.println("incorrect, guess again.");
+							}
 						}
-						else
-						{
-							System.out.println("incorrect, try again");
 						}
 					}
-				}
+					else
+					{
+						System.out.println("incorrect, try again");
+					}
+				
 			}
+	    }
+		}
+		System.out.println("Congrats, You Win! Until next time, bye!");
+		s.close();
 	}
-		s.close();		
-	}	
 }
 
