@@ -248,18 +248,43 @@ public class Game {
 		s.close();
 	}
 	
-	public void guessTheBirthdayDate()
+	
+	
+	public void guessTheBirthdateDay()
 	{
+		System.out.println(dayOfWeek);
 		Scanner s = new Scanner(System.in);
-
-		System.out.println("Guess the Year: ");	
 		
 		boolean quitting = false;
+		boolean correctInput = false;
 		
-		
-		
-		
+		while(!quitting)
+		{
+			System.out.println("Guess Day of Week");
+			
+			if(s.hasNext())
+			{												
+				while(!correctInput)
+				{				
+					if(s.hasNext())
+					{
+						String input = s.next();
+						
+						if(dayOfWeek.equalsIgnoreCase(input))
+						{
+							System.err.println("Correct, you win... bye");
+							quitting = true;
+							correctInput = true;
+						}
+						else
+						{
+							System.out.println("incorrect, try again");
+						}
+					}
+				}
+			}
 	}
-	
+		s.close();		
+	}	
 }
 
