@@ -286,7 +286,6 @@ public class Game {
 			{
 				System.err.println("incorrect, it was a " + dayOfWeek);
 				
-				System.out.println("Generating new date... ");
 				getRandomDate();
 			}
 		}
@@ -297,7 +296,7 @@ public class Game {
 		}
 		
 		try {
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -396,7 +395,6 @@ public class Game {
 			{
 				System.out.println("correct");
 				winCount++;
-				System.out.println("Generating new date... ");
 			}
 			else
 			{				
@@ -407,6 +405,8 @@ public class Game {
 		
 		System.out.println("You scored " + winCount + " out of 5.  Game Over. Bye. ");
 		sBirthdate.close();
+		
 	}
+	
 }
 
