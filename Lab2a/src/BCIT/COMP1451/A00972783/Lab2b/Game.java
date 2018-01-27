@@ -9,6 +9,7 @@ public class Game {
 	private final int THIRTYMONTH = 30;
 	private final int THIRTYONEMONTH = 31;
 	private final int FEB = 28;
+	private final int CURRENTYEAR = 2018;
 	
 	private int randomYear;
 	private int randomMonth;
@@ -67,46 +68,46 @@ public class Game {
 		if(randomMonth == 1 || randomMonth == 3 || randomMonth == 5 || randomMonth == 7 || randomMonth == 8 || randomMonth == 10 || randomMonth == 12)
 		{
 			randomDay = r.nextInt(THIRTYONEMONTH) + 1;
-			System.out.println("Year: " + randomYear);
-			System.out.println("Month: " + randomMonth);
-			System.out.println("Day: " + randomDay);
-			System.out.println("31 day Month");
 			Date date = new Date(randomDay, randomMonth, randomYear);
 			dayOfWeek = date.getDayOfWeek();
+			setMonthString();
 			return date;
 			
 		}
 		else if(randomMonth == 2)
 		{
 			randomDay = r.nextInt(FEB) + 1;
-			System.out.println("Year: " + randomYear);
-			System.out.println("Month: " + randomMonth);
-			System.out.println("Day: " + randomDay);
-			System.out.println("Feb Month");
 			Date date = new Date(randomDay, randomMonth, randomYear);
 			dayOfWeek = date.getDayOfWeek();
+			setMonthString();
 			return date;
 		}		
 		else
 		{
 			randomDay = r.nextInt(THIRTYMONTH) + 1;
-			System.out.println("Year: " + randomYear);
-			System.out.println("Month: " + randomMonth);
-			System.out.println("Day: " + randomDay);
-			System.out.println("30 day Month");
 			Date date = new Date(randomDay, randomMonth, randomYear);
 			dayOfWeek = date.getDayOfWeek();
+			setMonthString();
 			return date;
 		}
+		
+
 	}
 		
 	public void guessTheDate()
-	{
+	{	
+		getRandomDate();
+		
 		boolean quitting = false;
 		
 		Scanner s = new Scanner(System.in);
 
-		System.out.println("Guess the Year: ");	
+		System.out.println("Welcome to Guess the Date! ");
+		System.out.println("Randomly generating date... ");
+		System.out.println("... ");
+		System.out.println("... ");
+		System.out.println("... ");
+		System.out.println("Guess the Year (or Q to quit): ");
 		
 		while(!quitting)
 		{	
@@ -188,6 +189,7 @@ public class Game {
 												System.out.println("YOU ARE THE WINNER! The date was: " + getMonthString() + " " + randomDay + ", " + randomYear + ". It was a " + dayOfWeek +". Play again or press Q to quit: ");
 												System.out.println();
 												getRandomDate();
+												System.out.println("Guess the Year: ");
 											}
 										}	
 										else
@@ -245,160 +247,159 @@ public class Game {
 
 		
 		}
-		s.close();
 	}
-	
-	
-	
+		
 	public void guessTheBirthdateDay()
 	{
-		System.out.println(dayOfWeek);
-		Scanner s = new Scanner(System.in);
 		
-		boolean quitting = false;
-		boolean secondInputGuess = false;
-		boolean thirdInputGuess = false;
-		boolean fourthInputGuess = false;
-		boolean fifthInputGuess = false;
+		getRandomDate();
+		
+		Scanner sBirthdate = new Scanner(System.in);
+		
+		
 		int winCount = 0;
 		
-		if(winCount < 5)
+		System.out.println("Starting new game...");
+		System.out.println("Welcome to Guess The Birthdate Day");
+		
+		System.out.println("Generating random date: ");
+		System.out.println();
+		
+		while(randomYear < 1900 || randomYear > CURRENTYEAR)
 		{
-		while(!quitting)
+			getRandomDate();
+		}
+		
+		System.out.println("Date #1: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
+	
+		
+		if(sBirthdate.hasNext())
 		{
-			System.out.println("Guess Day of Week");
+			String input = sBirthdate.next();
 			
-			if(s.hasNext())
+			if(dayOfWeek.equalsIgnoreCase(input))
 			{
-				String input = s.next();
-						
-					if(dayOfWeek.equalsIgnoreCase(input))
-					{
-						System.out.println("Correct");
-						System.out.println();
-						System.out.println("2nd Random Date");
-						getRandomDate();
+				System.out.println("correct");
+				winCount++;
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
+			else
+			{
+				System.err.println("incorrect");
+				System.err.println("It was a " + dayOfWeek);
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
+		}
+		
+		while(randomYear < 1900 || randomYear > CURRENTYEAR)
+		{
+			getRandomDate();
+		}
+				
+		System.out.println("Date #2: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
+		
+		
+		if(sBirthdate.hasNext())
+		{
+			String secondInput = sBirthdate.next();
+			if(dayOfWeek.equalsIgnoreCase(secondInput))
+			{
+				System.out.println("correct");
+				winCount++;
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
+			else
+			{
+				System.err.println("incorrect");
+				System.err.println("It was a " + dayOfWeek);
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
+		}
+		
+		
+		while(randomYear < 1900 || randomYear > CURRENTYEAR)
+		{
+			getRandomDate();
+		}
 
-						System.out.println(dayOfWeek);
-						winCount++;
-						System.out.println("win count is: " + winCount);
-						
-						
-						while(!secondInputGuess)
-						{
-							System.out.println("Guess Day of Week (2ndTime)");
-							
-						if(s.hasNext())
-						{							
-							String secondInput = s.next();
-							if(dayOfWeek.equalsIgnoreCase(secondInput))
-							{
-								System.out.println("Correct");
-								System.out.println();
-								System.out.println("3rd Random Date");
-								getRandomDate();
-								System.out.println(dayOfWeek);
-								winCount++;
-								System.out.println("win count is: " + winCount);
-								
-								
-								while(!thirdInputGuess)
-								{
-									System.out.println("Guess Day of Week (3rdTime)");
-									
-								if(s.hasNext())
-								{
-
-									String thirdInput = s.next();
-									if(dayOfWeek.equalsIgnoreCase(thirdInput))
-									{
-										System.out.println("Correct");
-										System.out.println();
-										
-										System.out.println("4th Random Date");
-										getRandomDate();
-										System.out.println(dayOfWeek);
-										winCount++;
-										System.out.println("win count is: " + winCount);
-										
-										while(!fourthInputGuess)
-										{
-											System.out.println("Guess Day of Week (4th Time)");
-											
-											if(s.hasNext())
-											{
-												String fourthInput = s.next();
-												if(dayOfWeek.equalsIgnoreCase(fourthInput))
-												{
-													System.out.println("Correct");
-													System.out.println();
-													
-													System.out.println("5th Random Date");
-													getRandomDate();
-													System.out.println(dayOfWeek);
-													winCount++;
-													System.out.println("win count is: " + winCount);
-													
-													while(!fifthInputGuess)
-													{
-														System.out.println("Guess Day of Week (5th Time)");
-														
-														if(s.hasNext())
-														{
-															String fifthInput = s.next();
-															if(dayOfWeek.equalsIgnoreCase(fifthInput))
-															{
-																System.out.println("Correct");
-																winCount++;
-																fifthInputGuess = true;
-																fourthInputGuess = true;
-																thirdInputGuess = true;
-																secondInputGuess = true;
-																quitting = true;
-															}
-															
-															else
-															{
-																System.out.println("incorrect try again");
-															}
-														}
-													}
-												
-													
-												}
-												else
-												{
-													System.out.println("incorrect, guess again: ");
-												}
-											}											
-										}
-									
-									}
-									else
-									{
-										System.err.println("incorrect, guess again: ");
-									}
-								}
-								}
-								
-							}
-							else
-							{
-								System.err.println("incorrect, guess again.");
-							}
-						}
-						}
-					}
-					else
-					{
-						System.out.println("incorrect, try again");
-					}
+		System.out.println("Date #3: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
+		
+		if(sBirthdate.hasNext())
+		{
+			String thirdInput = sBirthdate.next();
+			if(dayOfWeek.equalsIgnoreCase(thirdInput))
+			{
+				System.out.println("correct");
+				winCount++;
+				System.out.println("Generating new date... ");
+				getRandomDate();
 				
 			}
-	    }
+			else
+			{
+				System.err.println("incorrect");
+				System.err.println("It was a " + dayOfWeek);
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
 		}
-		System.out.println("Congrats, You Win! Until next time, bye!");
-		s.close();
+		
+		
+		while(randomYear < 1900 || randomYear > CURRENTYEAR)
+		{
+			getRandomDate();
+		}
+		
+		System.out.println("Date #4: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
+		
+		if(sBirthdate.hasNext())
+		{
+			String fourthInput = sBirthdate.next();
+			if(dayOfWeek.equalsIgnoreCase(fourthInput))
+			{
+				System.out.println("correct");
+				winCount++;
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
+			else
+			{
+				System.err.println("incorrect");
+				System.err.println("It was a " + dayOfWeek);
+				System.out.println("Generating new date... ");
+				getRandomDate();
+			}
+		}
+		
+		while(randomYear < 1900 || randomYear > CURRENTYEAR)
+		{
+			getRandomDate();
+		}
+		
+		System.out.println("Date #5: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
+		
+		if(sBirthdate.hasNext())
+		{
+			String fifthInput = sBirthdate.next();
+			if(dayOfWeek.equalsIgnoreCase(fifthInput))
+			{
+				System.out.println("correct");
+				winCount++;
+				System.out.println("Generating new date... ");
+			}
+			else
+			{				
+				System.err.println("incorrect");
+				System.err.println("It was a " + dayOfWeek);
+			}
+		}
+		
+		System.out.println("You scored " + winCount + " out of 5.  Game Over. Bye. ");
+		sBirthdate.close();
 	}
 }
 
