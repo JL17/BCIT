@@ -2,6 +2,7 @@ package BCIT.COMP1451.A00972783.Lab2b;
 import BCIT.COMP1451.A00972783.Lab2a.*;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 
 public class Game {
@@ -97,7 +98,6 @@ public class Game {
 	public void guessTheDate()
 	{	
 		getRandomDate();
-		
 		boolean quitting = false;
 		
 		Scanner s = new Scanner(System.in);
@@ -263,15 +263,14 @@ public class Game {
 		System.out.println("Welcome to Guess The Birthdate Day");
 		
 		System.out.println("Generating random date: ");
-		System.out.println();
 		
 		while(randomYear < 1900 || randomYear > CURRENTYEAR)
 		{
 			getRandomDate();
 		}
-		
+				
 		System.out.println("Date #1: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
-	
+		
 		
 		if(sBirthdate.hasNext())
 		{
@@ -281,13 +280,12 @@ public class Game {
 			{
 				System.out.println("correct");
 				winCount++;
-				System.out.println("Generating new date... ");
 				getRandomDate();
 			}
 			else
 			{
-				System.err.println("incorrect");
-				System.err.println("It was a " + dayOfWeek);
+				System.err.println("incorrect, it was a " + dayOfWeek);
+				
 				System.out.println("Generating new date... ");
 				getRandomDate();
 			}
@@ -297,13 +295,21 @@ public class Game {
 		{
 			getRandomDate();
 		}
-				
+		
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		System.out.println("Date #2: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
 		
 		
 		if(sBirthdate.hasNext())
 		{
 			String secondInput = sBirthdate.next();
+			
 			if(dayOfWeek.equalsIgnoreCase(secondInput))
 			{
 				System.out.println("correct");
@@ -359,6 +365,7 @@ public class Game {
 		if(sBirthdate.hasNext())
 		{
 			String fourthInput = sBirthdate.next();
+			
 			if(dayOfWeek.equalsIgnoreCase(fourthInput))
 			{
 				System.out.println("correct");
