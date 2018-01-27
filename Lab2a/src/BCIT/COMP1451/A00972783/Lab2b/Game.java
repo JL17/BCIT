@@ -120,15 +120,15 @@ public class Game {
 				
 				if(input == 0)
 				{
-					System.err.println("Zero is not a valid year. Guess year again: or Q to quit.");
+					System.out.println("Zero is not a valid year. Guess year again: or Q to quit.");
 				}	
 				else if(input < randomYear)
 				{
-					System.err.println("incorrect, actual value is higher. Guess year again: Or Q to quit.");
+					System.out.println("incorrect, actual value is higher. Guess year again: Or Q to quit.");
 				}
 				else if(input > randomYear)
 				{
-					System.err.println("incorrect, actual value is lower. Guess year again: Or Q to quit.");
+					System.out.println("incorrect, actual value is lower. Guess year again: Or Q to quit.");
 				}
 				else
 				{
@@ -145,15 +145,15 @@ public class Game {
 							
 							if(monthInput == 0)
 							{
-								System.err.println("Zero is not a valid month. Guess month again: Or Q to quit.");
+								System.out.println("Zero is not a valid month. Guess month again: Or Q to quit.");
 							}
 							else if(monthInput < randomMonth)
 							{
-								System.err.println("incorrect, actual value is higher. Guess month again: Or Q to quit.");
+								System.out.println("incorrect, actual value is higher. Guess month again: Or Q to quit.");
 							}
 							else if(monthInput > randomMonth)
 							{
-								System.err.println("incorrect, actual value is lower. Guess month again: Or Q to quit.");
+								System.out.println("incorrect, actual value is lower. Guess month again: Or Q to quit.");
 							}
 
 							else
@@ -170,15 +170,15 @@ public class Game {
 											
 											if(dayInput == 0)
 											{
-												System.err.println("Zero is not a valid day. Guess day again: Or Q to quit.");
+												System.out.println("Zero is not a valid day. Guess day again: Or Q to quit.");
 											}
 											else if(dayInput < randomDay)
 											{
-												System.err.println("incorrect, actual value is higher. Guess day again: Or Q to quit.");
+												System.out.println("incorrect, actual value is higher. Guess day again: Or Q to quit.");
 											}
 											else if(dayInput > randomDay)
 											{
-												System.err.println("incorrect, actual value is lower. Guess day again: Or Q to quit.");
+												System.out.println("incorrect, actual value is lower. Guess day again: Or Q to quit.");
 											}
 											else
 											{
@@ -204,7 +204,7 @@ public class Game {
 											}
 											else
 											{
-												System.err.println("not a number: " + stringInput);
+												System.out.println("not a number: " + stringInput);
 												System.out.println("Guess day again: Or Q to Quit.");
 											}
 										}
@@ -222,7 +222,7 @@ public class Game {
 							}
 							else
 							{
-								System.err.println("not a number: " + monthStepInput);
+								System.out.println("not a number: " + monthStepInput);
 								System.out.println("Guess month again: or Q to Quit.");
 							}
 						}
@@ -240,7 +240,7 @@ public class Game {
 				}
 				else
 				{
-					System.err.println("not a number: " + stringInput);
+					System.out.println("not a number: " + stringInput);
 					System.out.println("Guess year again: ");
 				}
 			}
@@ -284,7 +284,7 @@ public class Game {
 			}
 			else
 			{
-				System.err.println("incorrect, it was a " + dayOfWeek);
+				System.out.println("incorrect, it was a " + dayOfWeek);
 				
 				getRandomDate();
 			}
@@ -295,12 +295,6 @@ public class Game {
 			getRandomDate();
 		}
 		
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		System.out.println("Date #2: What day of the week was " + monthString + " " + randomDay + ", " + randomYear + ":");
 		
@@ -318,8 +312,8 @@ public class Game {
 			}
 			else
 			{
-				System.err.println("incorrect");
-				System.err.println("It was a " + dayOfWeek);
+				System.out.println("incorrect");
+				System.out.println("It was a " + dayOfWeek);
 				System.out.println("Generating new date... ");
 				getRandomDate();
 			}
@@ -346,8 +340,8 @@ public class Game {
 			}
 			else
 			{
-				System.err.println("incorrect");
-				System.err.println("It was a " + dayOfWeek);
+				System.out.println("incorrect");
+				System.out.println("It was a " + dayOfWeek);
 				System.out.println("Generating new date... ");
 				getRandomDate();
 			}
@@ -374,8 +368,8 @@ public class Game {
 			}
 			else
 			{
-				System.err.println("incorrect");
-				System.err.println("It was a " + dayOfWeek);
+				System.out.println("incorrect");
+				System.out.println("It was a " + dayOfWeek);
 				System.out.println("Generating new date... ");
 				getRandomDate();
 			}
@@ -398,8 +392,8 @@ public class Game {
 			}
 			else
 			{				
-				System.err.println("incorrect");
-				System.err.println("It was a " + dayOfWeek);
+				System.out.println("incorrect");
+				System.out.println("It was a " + dayOfWeek);
 			}
 		}
 		

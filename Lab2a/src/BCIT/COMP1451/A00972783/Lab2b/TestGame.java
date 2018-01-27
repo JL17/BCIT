@@ -7,7 +7,7 @@ public class TestGame {
 
 		game.guessTheDate();
 		game.guessTheBirthdateDay();
-			
+		
 						
 	}
 
