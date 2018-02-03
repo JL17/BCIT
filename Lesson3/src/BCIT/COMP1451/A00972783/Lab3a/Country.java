@@ -5,13 +5,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class Country {
-	
-	
+public class Country {	
 	
 	private String[][] provinces = new String[10][2];
-	private HashMap<String, Country> countries;
-	
+	private HashMap<String, Country> countries;	
 	private String provinceName;
 	
 	public Country(String provinceName)
@@ -60,8 +57,7 @@ public class Country {
 		{
 		countries.put(provinces[row][0], new Country(provinces[row][1]));		
 		}
-	}
-	
+	}	
 	
 	public void showAllMappings()
 	{
@@ -93,14 +89,43 @@ public class Country {
 	
 	public boolean doesAnyProvinceContain(String substring)
 	{
+
+		boolean doesAnyProvinceContain = false;
 		
-		countries = new HashMap<String, Country>();
+		if(substring != null && !substring.isEmpty())
+		{
 		
-		Set<String> keys = countries.keySet();
+			Set<String> keys = countries.keySet();
 		
+			Iterator<String> it1 = keys.iterator();
 		
+			while(it1.hasNext())
+			{
+				String province = it1.next();
+				Country oneCountry = countries.get(province);
+				if(countries.get(province).getProvinceName().equals(substring))
+				{
+					doesAnyProvinceContain = true;
+				}
+				else
+				{
+					//do nothing;
+				}
+				
+				System.out.println(oneCountry.getProvinceName());
+			}
+			
+			System.out.println(doesAnyProvinceContain);
+			return doesAnyProvinceContain;
+		}
 		
-		return true;
+		else
+		{
+			System.err.println("error, substring value cannot be null");
+			return doesAnyProvinceContain;
+		}
+
+		
 	}
 	
 	

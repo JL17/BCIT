@@ -10,6 +10,8 @@ public class TestCountry {
 		c.showAllMappings();
 		
 		c.showAllMappings2();
+		
+		c.doesAnyProvinceContain(null);
 
 	}
 
