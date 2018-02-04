@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.HashSet;
  
+@SuppressWarnings("unused")
 public class MathematicsTest {
 
 	private Mathematics math;
