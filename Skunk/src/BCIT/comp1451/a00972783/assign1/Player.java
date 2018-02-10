@@ -2,27 +2,27 @@ package BCIT.comp1451.a00972783.assign1;
 
 public class Player 
 {
-	private String fName;
-	private String lName;
+	private String firstName;
+	private String lastName;
 	private boolean isStanding;
 	private int playerScore;
 	
-	public Player(String fName, String lName)
+	public Player(String firstName, String lastName)
 	{
-		this.fName = fName;
-		this.lName = lName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.playerScore = 0;
 		setState(true);
 	}
 	
 	public String getFirstName()
 	{
-		return this.fName;
+		return this.firstName;
 	}
 	
 	public void setFirstName(String value)
 	{
-		this.fName = value.equals("") || value == null ? "John" : value;
+		this.firstName = value.equals("") || value == null ? "Steve" : value;
 	}
 	
 	public boolean getPlayerState()
@@ -47,6 +47,6 @@ public class Player
 	
 	public String toString()
 	{
-		return String.format("%s %s", fName, lName);
+		return String.format("%s %s", firstName, lastName);
 	}
 }

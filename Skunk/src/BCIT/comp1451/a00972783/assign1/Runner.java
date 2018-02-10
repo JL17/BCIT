@@ -4,9 +4,9 @@ public class Runner
 {
 	public static void main(String[] args)
 	{
-		System.out.println("Let's play SKUNK !!!");
+		System.out.println("Let's Play Skunk :D ");
 		Run();
-		System.out.println("Finished !!");
+		System.out.println("Game Over, thanks for playing! ");
 	}
 	
 	private static void Run()

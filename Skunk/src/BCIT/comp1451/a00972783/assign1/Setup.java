@@ -4,18 +4,17 @@ import java.util.ArrayList;
 
 public class Setup 
 {
-	//below will come from Scaner.in
-	//setup Players
+	//setup players
 	private ArrayList<Player> allPlayers;
 	
-	//Setup Rounds
+	//Setup rounds
 	private Round round;
 
 	public Setup()
 	{
 		this.allPlayers = new ArrayList<Player>();
-		this.allPlayers.add(new Player("John", "Winner"));
-		this.allPlayers.add(new Player("James", "Lost"));
+		this.allPlayers.add(new Player("Steve", "Winner"));
+		this.allPlayers.add(new Player("Terra", "Lost"));
 			
 		setRound(new Round(1));
 	}

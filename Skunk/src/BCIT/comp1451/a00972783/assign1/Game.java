@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class Game 
 {
-	private static final int DICE_MIN_VALUE  = 1;
-	private static final int DICE_MAX_VALUE = 6;
+	private static final int DICE_MIN  = 1;
+	private static final int DICE_MAX = 6;
 	
 	private int totalScore;
 	private int roundScore;
 	private Scanner sc;
 	private Setup s;
 
-	private boolean didWeSkunked;
+	private boolean didSkunked;
 	
 	public Game()
 	{
@@ -30,8 +30,8 @@ public class Game
 		int d1, d2, roundCounter =0;
 		for (int i = 0; i < s.getRound().getNoOfRounds(); i ++) 
 		{
-			//Round needs to finish when ALL players are sitting or got SKUNKED
-			while (!didWeSkunked) 
+		
+			while (!didSkunked) 
 			{
 				
 				d1 = getRandomNumber();
@@ -42,8 +42,8 @@ public class Game
 				
 				if (d1 == 1 && d2 == 1) 
 				{
-					//Check each player's state and if any of them is sitting. Zero out only the once where state is STANDING
-					System.out.println("Every person that stands gets 0. The rest keeps the score");
+					//Check each player's state and if any of them is sitting. Player standing zeroes out
+					System.out.println("People standing get zero's");
 					for(Player p : s.getPlayers())
 					{
 						if(p.getPlayerState())
@@ -51,10 +51,10 @@ public class Game
 							p.setPlayerScore(0);
 						}
 					}
-					didWeSkunked = true;
+					didSkunked = true;
 					totalScore = 0;
 					roundScore = 0;
-					System.out.println("WE GOT SKUNKED !!!");
+					System.out.println("Everyone got skunked, game over. ");
 					break;
 				}
 				else // check each players state and calculate round's score
@@ -92,7 +92,7 @@ public class Game
 	private int getRandomNumber()
 	{
 		Random rnd = new Random();
-		return rnd.nextInt((DICE_MAX_VALUE - DICE_MIN_VALUE) + 1) + DICE_MIN_VALUE;
+		return rnd.nextInt((DICE_MAX - DICE_MIN) + 1) + DICE_MIN;
 	}
 	
 	private void fixPlayersState()
